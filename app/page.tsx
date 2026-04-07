@@ -273,13 +273,16 @@ export default function MastersDraft() {
   const [lastUpdated, setLastUpdated] = useState<Date | null>(null);
   const [lbLoading, setLbLoading] = useState(false);
 
-  const notifRef = useRef<NodeJS.Timeout>();
+  //const notifRef = useRef<NodeJS.Timeout>();
+const notifRef = useRef<NodeJS.Timeout | null>(null);
 
-  const showNotif = (msg: string, type = "ok") => {
-    clearTimeout(notifRef.current);
-    setNotif({ msg, type });
-    notifRef.current = setTimeout(() => setNotif(null), 3500);
-  };
+const showNotif = (msg: string, type = "ok") => {
+  // Only clear if the ref is not null
+  if (notifRef.current) clearTimeout(notifRef.current);
+  
+  setNotif({ msg, type });
+  notifRef.current = setTimeout(() => setNotif(null), 3500);
+};
 
   const isComm = username === COMMISSIONER;
   const rosters = buildRosters(picks);
