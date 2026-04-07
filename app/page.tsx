@@ -34,103 +34,95 @@ function buildSnakeOrder(participants: string[]) {
 
 // ─── Player Pool ──────────────────────────────────────────────────────────────
 const PLAYER_POOL = [
-  // ── Elite tier ──────────────────────────────────────────────────────────────
-  { id: 1,  espnName: "Scottie Scheffler",         name: "Scottie Scheffler",         country: "USA", birthYear: 1996, lefty: false, categories: ["anyone","american"] },
-  { id: 2,  espnName: "Rory McIlroy",              name: "Rory McIlroy",              country: "NIR", birthYear: 1989, lefty: false, categories: ["anyone","foreigner"] },
-  { id: 3,  espnName: "Xander Schauffele",         name: "Xander Schauffele",         country: "USA", birthYear: 1993, lefty: false, categories: ["anyone","american"] },
-  { id: 4,  espnName: "Collin Morikawa",           name: "Collin Morikawa",           country: "USA", birthYear: 1997, lefty: false, categories: ["anyone","american"] },
-  { id: 5,  espnName: "Viktor Hovland",            name: "Viktor Hovland",            country: "NOR", birthYear: 1997, lefty: false, categories: ["anyone","foreigner"] },
-  { id: 6,  espnName: "Bryson DeChambeau",         name: "Bryson DeChambeau",         country: "USA", birthYear: 1993, lefty: false, categories: ["anyone","american"] },
-  { id: 7,  espnName: "Brooks Koepka",             name: "Brooks Koepka",             country: "USA", birthYear: 1990, lefty: false, categories: ["anyone","american"] },
-  { id: 8,  espnName: "Jon Rahm",                  name: "Jon Rahm",                  country: "ESP", birthYear: 1994, lefty: false, categories: ["anyone","foreigner"] },
-  { id: 9,  espnName: "Patrick Cantlay",           name: "Patrick Cantlay",           country: "USA", birthYear: 1992, lefty: false, categories: ["anyone","american"] },
-  { id: 10, espnName: "Tommy Fleetwood",           name: "Tommy Fleetwood",           country: "ENG", birthYear: 1991, lefty: false, categories: ["anyone","foreigner"] },
-  // ── Contenders ──────────────────────────────────────────────────────────────
-  { id: 11, espnName: "Shane Lowry",               name: "Shane Lowry",               country: "IRL", birthYear: 1987, lefty: false, categories: ["anyone","foreigner"] },
-  { id: 12, espnName: "Tyrrell Hatton",            name: "Tyrrell Hatton",            country: "ENG", birthYear: 1991, lefty: false, categories: ["anyone","foreigner"] },
-  { id: 13, espnName: "Russell Henley",            name: "Russell Henley",            country: "USA", birthYear: 1989, lefty: false, categories: ["anyone","american"] },
-  { id: 14, espnName: "Hideki Matsuyama",          name: "Hideki Matsuyama",          country: "JPN", birthYear: 1992, lefty: false, categories: ["anyone","foreigner"] },
-  { id: 15, espnName: "Sungjae Im",                name: "Sungjae Im",                country: "KOR", birthYear: 1998, lefty: false, categories: ["anyone","foreigner"] },
-  { id: 16, espnName: "Min Woo Lee",               name: "Min Woo Lee",               country: "AUS", birthYear: 1998, lefty: false, categories: ["anyone","foreigner"] },
-  { id: 17, espnName: "Jordan Spieth",             name: "Jordan Spieth",             country: "USA", birthYear: 1993, lefty: false, categories: ["anyone","american"] },
-  { id: 18, espnName: "Justin Thomas",             name: "Justin Thomas",             country: "USA", birthYear: 1993, lefty: false, categories: ["anyone","american"] },
-  { id: 19, espnName: "Ludvig Aberg",              name: "Ludvig Åberg",              country: "SWE", birthYear: 2000, lefty: false, categories: ["anyone","foreigner"] },
-  { id: 20, espnName: "Sepp Straka",               name: "Sepp Straka",               country: "AUT", birthYear: 1993, lefty: false, categories: ["anyone","foreigner"] },
-  { id: 21, espnName: "Dustin Johnson",            name: "Dustin Johnson",            country: "USA", birthYear: 1984, lefty: false, categories: ["anyone","american"] },
-  { id: 22, espnName: "Cameron Smith",             name: "Cameron Smith",             country: "AUS", birthYear: 1993, lefty: false, categories: ["anyone","foreigner"] },
-  { id: 23, espnName: "Nick Taylor",               name: "Nick Taylor",               country: "CAN", birthYear: 1988, lefty: false, categories: ["anyone","foreigner"] },
-  { id: 24, espnName: "Corey Conners",             name: "Corey Conners",             country: "CAN", birthYear: 1991, lefty: false, categories: ["anyone","foreigner"] },
-  { id: 25, espnName: "Adam Scott",                name: "Adam Scott",                country: "AUS", birthYear: 1980, lefty: false, categories: ["anyone","foreigner"] },
-  { id: 26, espnName: "Jason Day",                 name: "Jason Day",                 country: "AUS", birthYear: 1988, lefty: false, categories: ["anyone","foreigner"] },
-  { id: 27, espnName: "Keegan Bradley",            name: "Keegan Bradley",            country: "USA", birthYear: 1986, lefty: false, categories: ["anyone","american"] },
-  { id: 28, espnName: "Harris English",            name: "Harris English",            country: "USA", birthYear: 1989, lefty: false, categories: ["anyone","american"] },
-  { id: 29, espnName: "Matt Fitzpatrick",          name: "Matt Fitzpatrick",          country: "ENG", birthYear: 1994, lefty: false, categories: ["anyone","foreigner"] },
-  { id: 30, espnName: "Nicolai Hojgaard",          name: "Nicolai Højgaard",          country: "DEN", birthYear: 2001, lefty: false, categories: ["anyone","foreigner"] },
-  { id: 31, espnName: "Rasmus Hojgaard",           name: "Rasmus Højgaard",           country: "DEN", birthYear: 2001, lefty: false, categories: ["anyone","foreigner"] },
-  { id: 32, espnName: "Danny Willett",             name: "Danny Willett",             country: "ENG", birthYear: 1987, lefty: false, categories: ["anyone","foreigner"] },
-  { id: 33, espnName: "Sergio Garcia",             name: "Sergio Garcia",             country: "ESP", birthYear: 1980, lefty: false, categories: ["anyone","foreigner"] },
-  { id: 34, espnName: "Wyndham Clark",             name: "Wyndham Clark",             country: "USA", birthYear: 1993, lefty: false, categories: ["anyone","american"] },
-  { id: 35, espnName: "Patrick Reed",              name: "Patrick Reed",              country: "USA", birthYear: 1990, lefty: false, categories: ["anyone","american"] },
-  { id: 36, espnName: "Davis Riley",               name: "Davis Riley",               country: "USA", birthYear: 1997, lefty: false, categories: ["anyone","american"] },
-  { id: 37, espnName: "Max Homa",                  name: "Max Homa",                  country: "USA", birthYear: 1990, lefty: false, categories: ["anyone","american"] },
-  { id: 38, espnName: "Cameron Young",             name: "Cameron Young",             country: "USA", birthYear: 1997, lefty: false, categories: ["anyone","american"] },
-  { id: 39, espnName: "Sam Burns",                 name: "Sam Burns",                 country: "USA", birthYear: 1996, lefty: false, categories: ["anyone","american"] },
-  { id: 40, espnName: "J.J. Spaun",               name: "J.J. Spaun",               country: "USA", birthYear: 1990, lefty: false, categories: ["anyone","american"] },
-  { id: 41, espnName: "Jake Knapp",                name: "Jake Knapp",                country: "USA", birthYear: 1995, lefty: false, categories: ["anyone","american"] },
-  { id: 42, espnName: "Ryan Fox",                  name: "Ryan Fox",                  country: "NZL", birthYear: 1989, lefty: false, categories: ["anyone","foreigner"] },
-  { id: 43, espnName: "Ryan Gerard",               name: "Ryan Gerard",               country: "USA", birthYear: 2000, lefty: false, categories: ["anyone","american"] },
-  { id: 44, espnName: "Chris Gotterup",            name: "Chris Gotterup",            country: "USA", birthYear: 2000, lefty: false, categories: ["anyone","american"] },
-  { id: 45, espnName: "Max Greyserman",            name: "Max Greyserman",            country: "USA", birthYear: 1999, lefty: false, categories: ["anyone","american"] },
-  { id: 46, espnName: "Ben Griffin",               name: "Ben Griffin",               country: "USA", birthYear: 1997, lefty: false, categories: ["anyone","american"] },
-  { id: 47, espnName: "Alex Noren",                name: "Alex Noren",                country: "SWE", birthYear: 1982, lefty: false, categories: ["anyone","foreigner"] },
-  { id: 48, espnName: "Justin Rose",               name: "Justin Rose",               country: "ENG", birthYear: 1980, lefty: false, categories: ["anyone","foreigner"] },
-  { id: 49, espnName: "Haotong Li",                name: "Haotong Li",                country: "CHN", birthYear: 1995, lefty: false, categories: ["anyone","foreigner"] },
-  { id: 50, espnName: "Charl Schwartzel",          name: "Charl Schwartzel",          country: "RSA", birthYear: 1984, lefty: false, categories: ["anyone","foreigner"] },
-  { id: 51, espnName: "Casey Jarvis",              name: "Casey Jarvis",              country: "RSA", birthYear: 2003, lefty: false, categories: ["anyone","foreigner"] },
-  { id: 52, espnName: "Aldrich Potgieter",         name: "Aldrich Potgieter",         country: "RSA", birthYear: 2005, lefty: false, categories: ["anyone","foreigner"] },
-  { id: 53, espnName: "Carlos Ortiz",              name: "Carlos Ortiz",              country: "MEX", birthYear: 1991, lefty: false, categories: ["anyone","foreigner"] },
-  { id: 54, espnName: "Kristoffer Reitan",         name: "Kristoffer Reitan",         country: "NOR", birthYear: 2003, lefty: false, categories: ["anyone","foreigner"] },
-  { id: 55, espnName: "Marco Penge",               name: "Marco Penge",               country: "ENG", birthYear: 2001, lefty: false, categories: ["anyone","foreigner"] },
-  { id: 56, espnName: "Aaron Rai",                 name: "Aaron Rai",                 country: "ENG", birthYear: 1994, lefty: false, categories: ["anyone","foreigner"] },
-  { id: 57, espnName: "Sami Valimaki",             name: "Sami Välimäki",             country: "FIN", birthYear: 1999, lefty: false, categories: ["anyone","foreigner"] },
-  { id: 58, espnName: "Nicolas Echavarria",        name: "Nicolas Echavarría",        country: "COL", birthYear: 1993, lefty: false, categories: ["anyone","foreigner"] },
-  { id: 59, espnName: "Tom McKibbin",              name: "Tom McKibbin",              country: "NIR", birthYear: 2002, lefty: false, categories: ["anyone","foreigner"] },
-  { id: 60, espnName: "Si Woo Kim",               name: "Si Woo Kim",               country: "KOR", birthYear: 1995, lefty: false, categories: ["anyone","foreigner"] },
-  { id: 61, espnName: "Harry Hall",                name: "Harry Hall",                country: "ENG", birthYear: 1996, lefty: false, categories: ["anyone","foreigner"] },
-  { id: 62, espnName: "Naoyuki Kataoka",           name: "Naoyuki Kataoka",           country: "JPN", birthYear: 1982, lefty: false, categories: ["anyone","foreigner"] },
-  { id: 63, espnName: "Daniel Berger",             name: "Daniel Berger",             country: "USA", birthYear: 1997, lefty: false, categories: ["anyone","american"] },
-  { id: 64, espnName: "Andrew Novak",              name: "Andrew Novak",              country: "USA", birthYear: 1996, lefty: false, categories: ["anyone","american"] },
-  { id: 65, espnName: "Sam Stevens",               name: "Sam Stevens",               country: "USA", birthYear: 2001, lefty: false, categories: ["anyone","american"] },
-  { id: 66, espnName: "Jacob Bridgeman",           name: "Jacob Bridgeman",           country: "USA", birthYear: 2002, lefty: false, categories: ["anyone","american"] },
-  { id: 67, espnName: "Kurt Kitayama",             name: "Kurt Kitayama",             country: "USA", birthYear: 1992, lefty: false, categories: ["anyone","american"] },
-  { id: 68, espnName: "Gary Woodland",             name: "Gary Woodland",             country: "USA", birthYear: 1984, lefty: false, categories: ["anyone","american"] },
-  { id: 69, espnName: "Maverick McNealy",          name: "Maverick McNealy",          country: "USA", birthYear: 1995, lefty: false, categories: ["anyone","american"] },
-  { id: 70, espnName: "Michael Kim",               name: "Michael Kim",               country: "USA", birthYear: 1993, lefty: false, categories: ["anyone","american"] },
-  { id: 71, espnName: "Johnny Keefer",             name: "Johnny Keefer",             country: "USA", birthYear: 1999, lefty: false, categories: ["anyone","american"] },
-  { id: 72, espnName: "Michael Brennan",           name: "Michael Brennan",           country: "USA", birthYear: 2003, lefty: false, categories: ["anyone","american"] },
-  // ── Left-handers ────────────────────────────────────────────────────────────
-  { id: 73, espnName: "Brian Harman",              name: "Brian Harman",              country: "USA", birthYear: 1987, lefty: true,  categories: ["anyone","american","lefty"] },
-  { id: 74, espnName: "Bubba Watson",              name: "Bubba Watson",              country: "USA", birthYear: 1978, lefty: true,  categories: ["anyone","american","lefty"] },
-  { id: 75, espnName: "Matt McCarty",              name: "Matt McCarty",              country: "USA", birthYear: 1997, lefty: true,  categories: ["anyone","american","lefty"] },
-  { id: 76, espnName: "Robert MacIntyre",          name: "Robert MacIntyre",          country: "SCO", birthYear: 1996, lefty: true,  categories: ["anyone","foreigner","lefty"] },
-  { id: 77, espnName: "Akshay Bhatia",             name: "Akshay Bhatia",             country: "USA", birthYear: 2002, lefty: true,  categories: ["anyone","american","lefty"] },
-  // ── Seniors (50+) ────────────────────────────────────────────────────────────
-  { id: 78, espnName: "Zach Johnson",              name: "Zach Johnson",              country: "USA", birthYear: 1976, lefty: false, categories: ["anyone","american","senior"] },
-  { id: 79, espnName: "Fred Couples",              name: "Fred Couples",              country: "USA", birthYear: 1959, lefty: false, categories: ["anyone","american","senior"] },
-  { id: 80, espnName: "Jose Maria Olazabal",       name: "Jose Maria Olazabal",       country: "ESP", birthYear: 1966, lefty: false, categories: ["anyone","foreigner","senior"] },
-  { id: 81, espnName: "Vijay Singh",               name: "Vijay Singh",               country: "FIJ", birthYear: 1963, lefty: false, categories: ["anyone","foreigner","senior"] },
-  { id: 82, espnName: "Padraig Harrington",        name: "Padraig Harrington",        country: "IRL", birthYear: 1971, lefty: false, categories: ["anyone","foreigner","senior"] },
-  { id: 83, espnName: "Darren Clarke",             name: "Darren Clarke",             country: "NIR", birthYear: 1968, lefty: false, categories: ["anyone","foreigner","senior"] },
-  { id: 84, espnName: "Angel Cabrera",             name: "Angel Cabrera",             country: "ARG", birthYear: 1969, lefty: false, categories: ["anyone","foreigner","senior"] },
-  { id: 85, espnName: "Mike Weir",                 name: "Mike Weir",                 country: "CAN", birthYear: 1970, lefty: true,  categories: ["anyone","foreigner","senior","lefty"] },
-  // ── Amateurs ────────────────────────────────────────────────────────────────
-  { id: 86, espnName: "Jackson Herrington",        name: "Jackson Herrington",        country: "USA", birthYear: 2005, lefty: true,  categories: ["anyone","american","lefty"] },
-  { id: 87, espnName: "Ethan Fang",                name: "Ethan Fang",                country: "USA", birthYear: 2005, lefty: false, categories: ["anyone","american"] },
-  { id: 88, espnName: "Brandon Holtz",             name: "Brandon Holtz",             country: "USA", birthYear: 2004, lefty: false, categories: ["anyone","american"] },
-  { id: 89, espnName: "Mason Howell",              name: "Mason Howell",              country: "USA", birthYear: 2004, lefty: false, categories: ["anyone","american"] },
-  { id: 90, espnName: "Fifa Laopakdee",            name: "Fifa Laopakdee",            country: "USA", birthYear: 2005, lefty: false, categories: ["anyone","american"] },
-  { id: 91, espnName: "Mateo Pulcini",             name: "Mateo Pulcini",             country: "ARG", birthYear: 2005, lefty: false, categories: ["anyone","foreigner"] },
-  { id: 92, espnName: "Rasmus Neergaard-Petersen", name: "Rasmus Neergaard-Petersen", country: "DEN", birthYear: 2004, lefty: false, categories: ["anyone","foreigner"] },
+  { id:1,  espnName:"Scottie Scheffler",    name:"Scottie Scheffler",    country:"USA", birthYear:1996, lefty:false, odds:500,   categories:["anyone","american"] },
+  { id:2,  espnName:"Jon Rahm",             name:"Jon Rahm",             country:"ESP", birthYear:1994, lefty:false, odds:850,   categories:["anyone","foreigner"] },
+  { id:3,  espnName:"Bryson DeChambeau",    name:"Bryson DeChambeau",    country:"USA", birthYear:1993, lefty:false, odds:1000,  categories:["anyone","american"] },
+  { id:4,  espnName:"Rory McIlroy",         name:"Rory McIlroy",         country:"NIR", birthYear:1989, lefty:false, odds:1150,  categories:["anyone","foreigner"] },
+  { id:5,  espnName:"Ludvig Aberg",         name:"Ludvig Åberg",         country:"SWE", birthYear:2000, lefty:false, odds:1400,  categories:["anyone","foreigner"] },
+  { id:6,  espnName:"Xander Schauffele",    name:"Xander Schauffele",    country:"USA", birthYear:1993, lefty:false, odds:1600,  categories:["anyone","american"] },
+  { id:7,  espnName:"Cameron Young",        name:"Cameron Young",        country:"USA", birthYear:1997, lefty:false, odds:2000,  categories:["anyone","american"] },
+  { id:8,  espnName:"Matt Fitzpatrick",     name:"Matt Fitzpatrick",     country:"ENG", birthYear:1994, lefty:false, odds:2000,  categories:["anyone","foreigner"] },
+  { id:9,  espnName:"Tommy Fleetwood",      name:"Tommy Fleetwood",      country:"ENG", birthYear:1991, lefty:false, odds:2200,  categories:["anyone","foreigner"] },
+  { id:10, espnName:"Justin Rose",          name:"Justin Rose",          country:"ENG", birthYear:1980, lefty:false, odds:2800,  categories:["anyone","foreigner"] },
+  { id:11, espnName:"Collin Morikawa",      name:"Collin Morikawa",      country:"USA", birthYear:1997, lefty:false, odds:3000,  categories:["anyone","american"] },
+  { id:12, espnName:"Robert MacIntyre",     name:"Robert MacIntyre",     country:"SCO", birthYear:1996, lefty:true,  odds:3250,  categories:["anyone","foreigner","lefty"] },
+  { id:13, espnName:"Patrick Reed",         name:"Patrick Reed",         country:"USA", birthYear:1990, lefty:false, odds:3500,  categories:["anyone","american"] },
+  { id:14, espnName:"Hideki Matsuyama",     name:"Hideki Matsuyama",     country:"JPN", birthYear:1992, lefty:false, odds:4000,  categories:["anyone","foreigner"] },
+  { id:15, espnName:"Min Woo Lee",          name:"Min Woo Lee",          country:"AUS", birthYear:1998, lefty:false, odds:4000,  categories:["anyone","foreigner"] },
+  { id:16, espnName:"Brooks Koepka",        name:"Brooks Koepka",        country:"USA", birthYear:1990, lefty:false, odds:4000,  categories:["anyone","american"] },
+  { id:17, espnName:"Jordan Spieth",        name:"Jordan Spieth",        country:"USA", birthYear:1993, lefty:false, odds:4500,  categories:["anyone","american"] },
+  { id:18, espnName:"Chris Gotterup",       name:"Chris Gotterup",       country:"USA", birthYear:1998, lefty:false, odds:5000,  categories:["anyone","american"] },
+  { id:19, espnName:"Russell Henley",       name:"Russell Henley",       country:"USA", birthYear:1989, lefty:false, odds:5500,  categories:["anyone","american"] },
+  { id:20, espnName:"Shane Lowry",          name:"Shane Lowry",          country:"IRL", birthYear:1987, lefty:false, odds:5500,  categories:["anyone","foreigner"] },
+  { id:21, espnName:"Si Woo Kim",           name:"Si Woo Kim",           country:"KOR", birthYear:1995, lefty:false, odds:5500,  categories:["anyone","foreigner"] },
+  { id:22, espnName:"Viktor Hovland",       name:"Viktor Hovland",       country:"NOR", birthYear:1997, lefty:false, odds:5500,  categories:["anyone","foreigner"] },
+  { id:23, espnName:"Akshay Bhatia",        name:"Akshay Bhatia",        country:"USA", birthYear:2002, lefty:true,  odds:6000,  categories:["anyone","american","lefty"] },
+  { id:24, espnName:"J.J. Spaun",          name:"J.J. Spaun",          country:"USA", birthYear:1990, lefty:false, odds:6500,  categories:["anyone","american"] },
+  { id:25, espnName:"Nicolai Hojgaard",     name:"Nicolai Højgaard",     country:"DEN", birthYear:2001, lefty:false, odds:6500,  categories:["anyone","foreigner"] },
+  { id:26, espnName:"Gary Woodland",        name:"Gary Woodland",        country:"USA", birthYear:1984, lefty:false, odds:7000,  categories:["anyone","american"] },
+  { id:27, espnName:"Adam Scott",           name:"Adam Scott",           country:"AUS", birthYear:1980, lefty:false, odds:7000,  categories:["anyone","foreigner"] },
+  { id:28, espnName:"Sepp Straka",          name:"Sepp Straka",          country:"AUT", birthYear:1993, lefty:false, odds:7000,  categories:["anyone","foreigner"] },
+  { id:29, espnName:"Justin Thomas",        name:"Justin Thomas",        country:"USA", birthYear:1993, lefty:false, odds:7500,  categories:["anyone","american"] },
+  { id:30, espnName:"Ryan Gerard",          name:"Ryan Gerard",          country:"USA", birthYear:1999, lefty:false, odds:8000,  categories:["anyone","american"] },
+  { id:31, espnName:"Harry Hall",           name:"Harry Hall",           country:"ENG", birthYear:1996, lefty:false, odds:8000,  categories:["anyone","foreigner"] },
+  { id:32, espnName:"Rasmus Hojgaard",      name:"Rasmus Højgaard",      country:"DEN", birthYear:2001, lefty:false, odds:8000,  categories:["anyone","foreigner"] },
+  { id:33, espnName:"Daniel Berger",        name:"Daniel Berger",        country:"USA", birthYear:1993, lefty:false, odds:8000,  categories:["anyone","american"] },
+  { id:34, espnName:"Keegan Bradley",       name:"Keegan Bradley",       country:"USA", birthYear:1986, lefty:false, odds:8000,  categories:["anyone","american"] },
+  { id:35, espnName:"Patrick Cantlay",      name:"Patrick Cantlay",      country:"USA", birthYear:1992, lefty:false, odds:8000,  categories:["anyone","american"] },
+  { id:36, espnName:"Cameron Smith",        name:"Cameron Smith",        country:"AUS", birthYear:1993, lefty:false, odds:9000,  categories:["anyone","foreigner"] },
+  { id:37, espnName:"Tyrrell Hatton",       name:"Tyrrell Hatton",       country:"ENG", birthYear:1991, lefty:false, odds:9000,  categories:["anyone","foreigner"] },
+  { id:38, espnName:"Haotong Li",           name:"Haotong Li",           country:"CHN", birthYear:1995, lefty:false, odds:9000,  categories:["anyone","foreigner"] },
+  { id:39, espnName:"Sam Stevens",          name:"Sam Stevens",          country:"USA", birthYear:1999, lefty:false, odds:9000,  categories:["anyone","american"] },
+  { id:40, espnName:"Nick Taylor",          name:"Nick Taylor",          country:"CAN", birthYear:1988, lefty:false, odds:9000,  categories:["anyone","foreigner"] },
+  { id:41, espnName:"Ryan Fox",             name:"Ryan Fox",             country:"NZL", birthYear:1990, lefty:false, odds:10000, categories:["anyone","foreigner"] },
+  { id:42, espnName:"Ben Griffin",          name:"Ben Griffin",          country:"USA", birthYear:1995, lefty:false, odds:10000, categories:["anyone","american"] },
+  { id:43, espnName:"Jason Day",            name:"Jason Day",            country:"AUS", birthYear:1988, lefty:false, odds:10000, categories:["anyone","foreigner"] },
+  { id:44, espnName:"Kurt Kitayama",        name:"Kurt Kitayama",        country:"USA", birthYear:1992, lefty:false, odds:10000, categories:["anyone","american"] },
+  { id:45, espnName:"Wyndham Clark",        name:"Wyndham Clark",        country:"USA", birthYear:1993, lefty:false, odds:10000, categories:["anyone","american"] },
+  { id:46, espnName:"Tom Kim",              name:"Tom Kim",              country:"KOR", birthYear:2002, lefty:false, odds:12000, categories:["anyone","foreigner"] },
+  { id:47, espnName:"Sahith Theegala",      name:"Sahith Theegala",      country:"USA", birthYear:1998, lefty:false, odds:12000, categories:["anyone","american"] },
+  { id:48, espnName:"Tony Finau",           name:"Tony Finau",           country:"USA", birthYear:1989, lefty:false, odds:12000, categories:["anyone","american"] },
+  { id:49, espnName:"Sungjae Im",           name:"Sungjae Im",           country:"KOR", birthYear:1998, lefty:false, odds:12000, categories:["anyone","foreigner"] },
+  { id:50, espnName:"Corey Conners",        name:"Corey Conners",        country:"CAN", birthYear:1991, lefty:false, odds:15000, categories:["anyone","foreigner"] },
+  { id:51, espnName:"Brian Harman",         name:"Brian Harman",         country:"USA", birthYear:1987, lefty:true,  odds:15000, categories:["anyone","american","lefty"] },
+  { id:52, espnName:"Sergio Garcia",        name:"Sergio Garcia",        country:"ESP", birthYear:1979, lefty:false, odds:15000, categories:["anyone","foreigner"] },
+  { id:53, espnName:"Thomas Detry",         name:"Thomas Detry",         country:"BEL", birthYear:1993, lefty:false, odds:20000, categories:["anyone","foreigner"] },
+  { id:54, espnName:"Denny McCarthy",       name:"Denny McCarthy",       country:"USA", birthYear:1993, lefty:false, odds:20000, categories:["anyone","american"] },
+  { id:55, espnName:"Davis Thompson",       name:"Davis Thompson",       country:"USA", birthYear:2000, lefty:false, odds:20000, categories:["anyone","american"] },
+  { id:56, espnName:"Harris English",       name:"Harris English",       country:"USA", birthYear:1989, lefty:false, odds:20000, categories:["anyone","american"] },
+  { id:57, espnName:"Jake Knapp",           name:"Jake Knapp",           country:"USA", birthYear:1995, lefty:false, odds:20000, categories:["anyone","american"] },
+  { id:58, espnName:"Matt McCarty",         name:"Matt McCarty",         country:"USA", birthYear:1998, lefty:true,  odds:20000, categories:["anyone","american","lefty"] },
+  { id:59, espnName:"Byeong Hun An",        name:"Byeong Hun An",        country:"KOR", birthYear:1991, lefty:false, odds:25000, categories:["anyone","foreigner"] },
+  { id:60, espnName:"Bubba Watson",         name:"Bubba Watson",         country:"USA", birthYear:1978, lefty:true,  odds:25000, categories:["anyone","american","lefty"] },
+  { id:61, espnName:"J.T. Poston",         name:"J.T. Poston",         country:"USA", birthYear:1994, lefty:false, odds:25000, categories:["anyone","american"] },
+  { id:62, espnName:"Ryo Hisatsune",        name:"Ryo Hisatsune",        country:"JPN", birthYear:2001, lefty:false, odds:25000, categories:["anyone","foreigner"] },
+  { id:63, espnName:"Adam Hadwin",          name:"Adam Hadwin",          country:"CAN", birthYear:1987, lefty:false, odds:30000, categories:["anyone","foreigner"] },
+  { id:64, espnName:"Brendan Steele",       name:"Brendan Steele",       country:"USA", birthYear:1983, lefty:false, odds:30000, categories:["anyone","american"] },
+  { id:65, espnName:"Casey Jarvis",         name:"Casey Jarvis",         country:"RSA", birthYear:2003, lefty:false, odds:30000, categories:["anyone","foreigner"] },
+  { id:66, espnName:"Jacob Bridgeman",      name:"Jacob Bridgeman",      country:"USA", birthYear:2000, lefty:false, odds:30000, categories:["anyone","american"] },
+  { id:67, espnName:"John Keefer",          name:"John Keefer",          country:"USA", birthYear:1997, lefty:false, odds:30000, categories:["anyone","american"] },
+  { id:68, espnName:"Keith Mitchell",       name:"Keith Mitchell",       country:"USA", birthYear:1991, lefty:false, odds:30000, categories:["anyone","american"] },
+  { id:69, espnName:"Mackenzie Hughes",     name:"Mackenzie Hughes",     country:"CAN", birthYear:1990, lefty:false, odds:30000, categories:["anyone","foreigner"] },
+  { id:70, espnName:"Taylor Pendrith",      name:"Taylor Pendrith",      country:"CAN", birthYear:1991, lefty:false, odds:30000, categories:["anyone","foreigner"] },
+  { id:71, espnName:"Thorbjorn Olesen",     name:"Thorbjorn Olesen",     country:"DEN", birthYear:1990, lefty:false, odds:30000, categories:["anyone","foreigner"] },
+  { id:72, espnName:"Carlos Ortiz",         name:"Carlos Ortiz",         country:"MEX", birthYear:1991, lefty:false, odds:30000, categories:["anyone","foreigner"] },
+  { id:73, espnName:"Fred Couples",         name:"Fred Couples",         country:"USA", birthYear:1959, lefty:false, odds:null,  categories:["anyone","american","senior"] },
+  { id:74, espnName:"Jose Maria Olazabal",  name:"Jose Maria Olazabal",  country:"ESP", birthYear:1966, lefty:false, odds:null,  categories:["anyone","foreigner","senior"] },
+  { id:75, espnName:"Angel Cabrera",        name:"Angel Cabrera",        country:"ARG", birthYear:1969, lefty:false, odds:null,  categories:["anyone","foreigner","senior"] },
+  { id:76, espnName:"Vijay Singh",          name:"Vijay Singh",          country:"FIJ", birthYear:1963, lefty:false, odds:null,  categories:["anyone","foreigner","senior"] },
+  { id:77, espnName:"Padraig Harrington",   name:"Padraig Harrington",   country:"IRL", birthYear:1971, lefty:false, odds:null,  categories:["anyone","foreigner","senior"] },
+  { id:78, espnName:"Ernie Els",            name:"Ernie Els",            country:"RSA", birthYear:1969, lefty:false, odds:null,  categories:["anyone","foreigner","senior"] },
+  { id:79, espnName:"Retief Goosen",        name:"Retief Goosen",        country:"RSA", birthYear:1969, lefty:false, odds:null,  categories:["anyone","foreigner","senior"] },
+  { id:80, espnName:"Mike Weir",            name:"Mike Weir",            country:"CAN", birthYear:1970, lefty:true,  odds:null,  categories:["anyone","foreigner","senior","lefty"] },
+  { id:81, espnName:"Lee Westwood",         name:"Lee Westwood",         country:"ENG", birthYear:1973, lefty:false, odds:null,  categories:["anyone","foreigner","senior"] },
+  { id:82, espnName:"Larry Mize",           name:"Larry Mize",           country:"USA", birthYear:1958, lefty:false, odds:null,  categories:["anyone","american","senior"] },
+  { id:83, espnName:"Bernhard Langer",      name:"Bernhard Langer",      country:"GER", birthYear:1957, lefty:false, odds:null,  categories:["anyone","foreigner","senior"] },
+  { id:84, espnName:"Ethan Fang",           name:"Ethan Fang (a)",       country:"USA", birthYear:2005, lefty:false, odds:null,  categories:["anyone","american"] },
+  { id:85, espnName:"Mason Howell",         name:"Mason Howell (a)",     country:"USA", birthYear:2003, lefty:false, odds:null,  categories:["anyone","american"] },
+  { id:86, espnName:"Jackson Herrington",   name:"Jackson Herrington (a)",country:"USA",birthYear:2003, lefty:true,  odds:null,  categories:["anyone","american","lefty"] },
+  { id:87, espnName:"Brandon Holtz",        name:"Brandon Holtz (a)",    country:"USA", birthYear:2003, lefty:false, odds:null,  categories:["anyone","american"] },
+  { id:88, espnName:"Fifa Laopakdee",       name:"Fifa Laopakdee (a)",   country:"THA", birthYear:2004, lefty:false, odds:null,  categories:["anyone","foreigner"] },
+  { id:89, espnName:"Mateo Pulcini",        name:"Mateo Pulcini (a)",    country:"ARG", birthYear:2004, lefty:false, odds:null,  categories:["anyone","foreigner"] },
 ];
 
 const CATEGORIES = [
@@ -163,6 +155,17 @@ type DraftState = {
 type LBEntry = { position: number; score: number; thru: number; status: string };
 
 const catInfo = (id: string): Category | undefined => CATEGORIES.find(c => c.id === id);
+
+function oddsLabel(odds: number | null): string | null {
+  return odds ? `+${odds.toLocaleString()}` : null;
+}
+function oddsColor(odds: number | null): string {
+  if (!odds) return "#444";
+  if (odds <= 1500) return "#81c784";
+  if (odds <= 4000) return "#C9A84C";
+  if (odds <= 10000) return "#888";
+  return "#555";
+}
 
 function normName(s: string) {
   return (s || "").toLowerCase()
@@ -765,7 +768,14 @@ const showNotif = (msg: string, type = "ok") => {
                     style={{ ...S.playerRow, opacity: canPick ? 1 : 0.35, cursor: canPick ? "pointer" : "default" }}
                     onClick={() => canPick && selectPlayer(player)}>
                     <div style={{ flex: 1 }}>
-                      <div style={S.playerName}>{player.name}</div>
+                      <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                        <span style={S.playerName}>{player.name}</span>
+                        {oddsLabel((player as any).odds) && (
+                          <span style={{ fontFamily: "monospace", fontSize: 10, color: oddsColor((player as any).odds) }}>
+                            {oddsLabel((player as any).odds)}
+                          </span>
+                        )}
+                      </div>
                       <div style={S.playerMeta}>{player.country}{player.categories.map(c => <span key={c} style={{ marginLeft: 5 }}>{catInfo(c)?.emoji}</span>)}</div>
                     </div>
                     <div style={S.playerRight}>
