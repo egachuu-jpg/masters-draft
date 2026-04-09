@@ -210,6 +210,10 @@ async function fetchESPNLeaderboard(pool: typeof PLAYER_POOL) {
   }
 }
 
+function fmtTimer(s: number) {
+  return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, "0")}`;
+}
+
 function scoreDisplay(score: number) {
   if (score < 0) return { text: score.toString(), color: "#81c784" };
   if (score === 0) return { text: "E", color: "#ddd" };
@@ -262,6 +266,9 @@ export default function MastersDraft() {
   const [catModal, setCatModal] = useState(false);
   const [pendingPick, setPendingPick] = useState<{ player: Player; eligibleCats: string[] } | null>(null);
   const [notif, setNotif] = useState<{ msg: string; type: string } | null>(null);
+
+  // Pick timer
+  const [pickTimeLeft, setPickTimeLeft] = useState(120);
 
   // Commissioner override
   const [commMode, setCommMode] = useState(false);
@@ -369,6 +376,16 @@ const showNotif = (msg: string, type = "ok") => {
       return () => clearInterval(iv);
     }
   }, [username, refreshLB]);
+
+  // ── Pick timer: resets to 120s on each new pick ───────────────────────────
+  useEffect(() => {
+    if (!draftState.is_started || draftState.is_complete) return;
+    setPickTimeLeft(120);
+    const iv = setInterval(() => {
+      setPickTimeLeft(prev => (prev > 0 ? prev - 1 : 0));
+    }, 1000);
+    return () => clearInterval(iv);
+  }, [draftState.is_started, draftState.is_complete, draftState.current_pick_index]);
 
   // ── Auth: register ────────────────────────────────────────────────────────
   const handleRegister = async () => {
@@ -695,6 +712,9 @@ const showNotif = (msg: string, type = "ok") => {
                 <div style={S.clockLabel}>YOUR PICK</div>
                 <div style={S.clockName}>Make your selection below</div>
                 <div style={S.clockSub}>Pick {currentPick?.pickNum} of {draftState.draft_order.length} · Round {(currentPick?.round ?? 0) + 1}</div>
+                <div style={{ fontSize: 28, fontWeight: 700, fontFamily: "monospace", color: pickTimeLeft <= 30 ? "#e57373" : "#C9A84C", marginTop: 8 }}>
+                  {fmtTimer(pickTimeLeft)}
+                </div>
                 <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginTop: 10 }}>
                   {CATEGORIES.map(c => {
                     const filled = !!rosters[username!]?.[c.id];
@@ -714,6 +734,9 @@ const showNotif = (msg: string, type = "ok") => {
                 <div style={S.clockLabel}>ON THE CLOCK</div>
                 <div style={S.clockName}>{currentPick?.participant}</div>
                 <div style={S.clockSub}>Pick {currentPick?.pickNum} of {draftState.draft_order.length} · Round {(currentPick?.round ?? 0) + 1}</div>
+                <div style={{ fontSize: 28, fontWeight: 700, fontFamily: "monospace", color: pickTimeLeft <= 30 ? "#e57373" : "#C9A84C", marginTop: 8 }}>
+                  {fmtTimer(pickTimeLeft)}
+                </div>
               </div>
             )}
 
